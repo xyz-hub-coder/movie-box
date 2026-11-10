@@ -1,0 +1,51 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/CodeOnTheGoProjects/Movie Box/gradle.properties",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/CodeOnTheGoProjects/Movie Box/secrets.properties",
+      "selection": {
+        "end": {
+          "column": 13,
+          "index": 13,
+          "line": 0
+        },
+        "start": {
+          "column": 13,
+          "index": 13,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/CodeOnTheGoProjects/Movie Box/app/build.gradle.kts",
+      "selection": {
+        "end": {
+          "column": 1,
+          "index": 2468,
+          "line": 100
+        },
+        "start": {
+          "column": 1,
+          "index": 2468,
+          "line": 100
+        }
+      }
+    }
+  ],
+  "projectPath": "/storage/emulated/0/CodeOnTheGoProjects/Movie Box",
+  "selectedFile": "/storage/emulated/0/CodeOnTheGoProjects/Movie Box/app/build.gradle.kts"
+}

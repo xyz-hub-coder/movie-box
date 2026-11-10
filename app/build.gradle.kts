@@ -6,6 +6,23 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+val secretsPropsFile = rootProject.file("secrets.properties")
+val secretsProps = Properties()
+
+if (secretsPropsFile.exists()) {
+    secretsPropsFile.inputStream().use {
+        secretsProps.load(it)
+    }
+}
+
+val tmdbToken = secretsProps.getProperty("TMDB_BEARER_TOKEN", "")
+
+if (tmdbToken.isBlank()) {
+    throw GradleException(
+        "TMDB_BEARER_TOKEN missing from secrets.properties"
+    )
+}
+
 val keystorePropsFile = rootProject.file("release.properties")
 val keystoreProps = Properties()
 
@@ -46,16 +63,22 @@ android {
     }
 
     defaultConfig {
-        applicationId = "aphl.moviebox.android"
-        minSdk = 24 
-        targetSdk = 36  
-        versionCode = 1
-        versionName = "1.0"
-        
-        vectorDrawables { 
-            useSupportLibrary = true
-        }
+    applicationId = "aphl.moviebox.android"
+    minSdk = 24
+    targetSdk = 36
+    versionCode = 1
+    versionName = "1.0"
+
+    buildConfigField(
+        "String",
+        "TMDB_BEARER_TOKEN",
+        "\"${tmdbToken.replace("\\", "\\\\").replace("\"", "\\\"")}\""
+    )
+
+    vectorDrawables {
+        useSupportLibrary = true
     }
+}
     
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17 
@@ -73,9 +96,9 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
-        
-    }
+    viewBinding = true
+    buildConfig = true
+}
     packaging {
         resources {
             resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
